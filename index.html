@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CFGurator</title>
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css all.min.css"
+    />
+  </head>
+  <body>
+    <div class="cfgurator">
+      <div class="key-selector">
+        <div class="keyboard">
+          <div class="row functions">
+            <button class="hidden"></button>
+            <button>F1</button>
+            <button>F2</button>
+            <button>F3</button>
+            <button>F4</button>
+            <button>F5</button>
+            <button>F6</button>
+            <button>F7</button>
+            <button>F8</button>
+            <button>F9</button>
+            <button>F10</button>
+            <button>F11</button>
+            <button>F12</button>
+          </div>
+          <div class="row zero">
+            <button class="hidden"></button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>0</button>
+            <button>-</button>
+            <button>=</button>
+            <button class="wide">BACKSPACE</button>
+          </div>
+          <div class="row one">
+            <button class="wide">TAB</button>
+            <button>Q</button>
+            <button>W</button>
+            <button>E</button>
+            <button>R</button>
+            <button>T</button>
+            <button>Y</button>
+            <button>U</button>
+            <button>I</button>
+            <button>O</button>
+            <button>P</button>
+            <button>[</button>
+            <button>]</button>
+            <button>\</button>
+          </div>
+          <div class="row two">
+            <button class="wide">CAPS LOCK</button>
+            <button>A</button>
+            <button>S</button>
+            <button>D</button>
+            <button>F</button>
+            <button>G</button>
+            <button>H</button>
+            <button>J</button>
+            <button>K</button>
+            <button>L</button>
+            <button>;</button>
+            <button>'</button>
+          </div>
+          <div class="row three">
+            <button class="wide">SHIFT</button>
+            <button>Z</button>
+            <button>X</button>
+            <button>C</button>
+            <button>V</button>
+            <button>B</button>
+            <button>N</button>
+            <button>M</button>
+            <button>,</button>
+            <button>.</button>
+            <button>/</button>
+            <button class="wide">SHIFT</button>
+          </div>
+          <div class="row four">
+            <button>CTRL</button>
+            <button>WIN</button>
+            <button>ALT</button>
+            <button class="super-wide">SPACE</button>
+            <button>ALT</button>
+            <button>CTRL</button>
+          </div>
+        </div>
+        <div class="extra-keys">
+          <div class="arrow-keys">
+            <div>
+              <button class="hidden"><i class="arrow up"></i></button>
+              <button><i class="arrow up"></i></button>
+            </div>
+            <div>
+              <button><i class="arrow left"></i></button>
+              <button><i class="arrow down"></i></button>
+              <button><i class="arrow right"></i></button>
+            </div>
+          </div>
+
+          <div class="weird-keys">
+            <div>
+              <button>INS</button>
+              <button>HOME</button>
+              <button>PAGE UP</button>
+            </div>
+            <div>
+              <button>DELETE</button>
+              <button>END</button>
+              <button>PAGE DOWN</button>
+            </div>
+          </div>
+
+          <div class="numpad">
+            <div>
+              <button>/</button>
+              <button>*</button>
+              <button>-</button>
+            </div>
+            <div>
+              <button>7</button>
+              <button>8</button>
+              <button>9</button>
+              <button>+</button>
+            </div>
+            <div>
+              <button>4</button>
+              <button>5</button>
+              <button>6</button>
+            </div>
+            <div>
+              <button>1</button>
+              <button>2</button>
+              <button>3</button>
+            </div>
+            <div>
+              <button class="wide">0</button>
+              <button>.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bind-editor">
+        <textarea name="bind-edit-box" id="editbox" cols="30" rows="10"></textarea>
+      </div>
+    </div>
+  </body>
+</html>

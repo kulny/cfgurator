@@ -1,0 +1,123 @@
+@import url("htpps://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.cfgurator {
+  display: flex;
+}
+
+body {
+  background: rgb(43, 43, 43);
+}
+
+#editbox {
+  padding: 10px;
+  margin: 50px;
+  border-radius: 4px;
+  font-size: 16px;
+  border: 2px solid;
+  resize: none;
+  height: 350px;
+  width: 300px;
+}
+
+/* main keyboard section */
+
+.keyboard {
+  margin: 50px auto;
+  width: 1500px;
+  box-shadow: none;
+}
+
+
+/* specific buttons */
+
+
+.wide {
+  width: auto;
+  padding: 5px;
+  min-width: 100px;
+}
+
+.super-wide {
+  width: 500px;
+}
+
+.arrow-keys {
+  float: left;
+  margin: 50px;
+}
+
+.weird-keys {
+  margin: 50px;
+}
+
+.numpad {
+  width: 500px;
+}
+
+.extra-keys {
+  width: 1500px;
+  display: flex;
+}
+
+/* buttons */
+
+button {
+  margin: 5px;
+  width: 70px;
+  height: 70px;
+  font-size: 16px;
+  background: #d8d8d86e;
+  border-radius: .5rem;
+  cursor: pointer;
+  border: 1px solid #e8e8e860;
+  transition: all .3s;
+  box-shadow: 6px 6px 12px #e0e0e01a, -6px -6px transparent;
+}
+
+button:hover {
+  border: 1px solid orange;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+
+/* arrow keys */
+
+.arrow {
+  border: solid black;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
