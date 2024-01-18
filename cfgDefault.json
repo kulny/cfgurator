@@ -1,0 +1,75 @@
+{
+    "q": [{}],
+    "w": [{}],
+    "e": [{}],
+    "r": [{}],
+    "t": [{
+      "molly": "bind \"t\" \"-kniv;slot10\""
+    }],
+    "y": [{}],
+    "u": [{}],
+    "i": [{}],
+    "o": [{}],
+    "p": [{}],
+    "\\": [{}],
+    "a": [{}],
+    "s": [{}],
+    "d": [{}],
+    "f": [{
+      "flash": "bind \"f\" \"-kniv;slot7\""
+    }],
+    "g": [{
+      "grenade": "bind \"g\" \"-kniv;slot6\""
+    }],
+    "h": [{
+      "runthrow": "alias \"+throwaction\" \"-attack; -attack2\"\nalias \"+runthrow\" \"+forward;+jump;\"\nalias \"-runthrow\" \"-jump;-forward\"\nbind \"h\" \"+runthrow;+throwaction\""
+    }],
+    "j": [{}],
+    "k": [{}],
+    "l": [{}],
+    "'": [{}],
+    "z": [{}],
+    "x": [{}],
+    "c": [{
+      "smoke": "bind \"c\" \"-kniv;slot8\""
+    }],
+    "v": [{
+      "jumpthrow": "alias jomp \"+jump_;-jump_\" # // bypass valves attempt at preventing jumpthrow binds\nalias jumpthrow \"jomp; -attack_; -attack2_\"\nbind v jumpthrow"
+    }],
+    "b": [{}],
+    "n": [{}],
+    "m": [{}],
+    ",": [{}],
+    ".":[ {
+      "mute": "bind \".\" \"toggle volume 0 0.3\""
+    }],
+    "ctrl": [{}],
+    "alt": [{}],
+    "space": [{}],
+    "up": [{}],
+    "down": [{}],
+    "left": [{}],
+    "right": [{}],
+    "home": [{}],
+    "page-up": [{}],
+    "page-down": [{}],
+    "end": [{}],
+    "f1": [{
+      "noclip": "alias \"+nc\" \"noclip 1; sv_cheats true;\"\nalias \"-nc\"\n\"noclip 0\"\nbind \"ctrl\" \"+nc\""
+    }],
+    "f2": [{}],
+    "f3": [{}],
+    "f4": [{}],
+    "f5": [{}],
+    "f6": [{}],
+    "f7": [{}],
+    "f8": [{}],
+    "f9": [{}],
+    "f10": [{}],
+    "f11": [{}],
+    "f12": [{}],
+    "tab": [{}],
+    "caps-lock": [{}],
+    "shift": [{}],
+    "general": [{}]
+  }
