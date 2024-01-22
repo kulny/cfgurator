@@ -31,7 +31,8 @@
     "z": [{}],
     "x": [{}],
     "c": [{
-      "smoke": "bind \"c\" \"-kniv;slot8\""
+      "smoke": "bind \"c\" \"-kniv;slot8\"",
+      "test": "bind c \"say test test test\""
     }],
     "v": [{
       "jumpthrow": "alias jomp \"+jump_;-jump_\" # // bypass valves attempt at preventing jumpthrow binds\nalias jumpthrow \"jomp; -attack_; -attack2_\"\nbind v jumpthrow"

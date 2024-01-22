@@ -24,26 +24,58 @@ function changeEditbox(event, json) {
   var key = event.target.innerHTML;
   console.log(json);
 
+  if (key.toLowerCase() == 'dev') {
+    var presetsSelector = document.getElementById('cfg-options');
+    var devSelect = document.createElement('option');
+    devSelect.innerHTML = 'devTest';
+    presetsSelector.replaceChildren(devSelect);
+    return;
+  }
+
   buildDropdown(key, bindEditor, json);
-  var editbox = document.getElementById("editbox");
-  editbox.value = event.target.innerHTML;
 }
 
-function buildDropdown(key, bindEditor, json) {
-  // var tag = '<select name="options" id="cfg-options"></select>';
-  var tag = document.createElement("select");
-  tag.setAttribute("id", 'cfg-options' );
+function buildDropdown(keyboardKey, bindEditor, json) {
+  // replace select element if it exists
+  if (bindEditor.firstElementChild.nodeName === 'select') {
+    bindEditor.removeChild(bindEditor.firstElementChild);
+  }
+  // create select element
+  var presetsSelector = document.createElement("select");
+  presetsSelector.setAttribute("id", 'cfg-options' );
+  presetsSelector.setAttribute('data-keyboard-key', keyboardKey);
+  // add the select element if it is not already there
   if(!bindEditor.contains(document.getElementById('cfg-options'))){
-    bindEditor.prepend(tag);
+    bindEditor.prepend(presetsSelector);
   }
-  for (const [key, value] of Object.entries(json)) {
-    if (_.isEmpty(value[0])){
-      continue;
-    }
+
+  var newChildren = [];
+  // get the cfg options from json and make option elements from them
+  for (var item in json[keyboardKey.toLowerCase()][0]) {
+
     const option = document.createElement("option");
-    option.setAttribute('id', key);
-    option.innerHTML = key;
+    option.setAttribute('id', item);
+    option.innerHTML = item;
+    option.value = item;
     
-    document.getElementById('cfg-options').appendChild(option);
+    newChildren.push(option);
   }
+  // the 'current' presetsSelector could be the manufactured one which will not replace the one 
+  // that is already there, so we must redefine it as the one that is already in the DOM
+  presetsSelector = document.getElementById('cfg-options');
+  presetsSelector.replaceChildren(...newChildren);
+
+  // presetsSelector.addEventListener('change', populateEditbox(json));
+  presetsSelector.onchange = (event) => {
+    populateEditbox(json);
+  }
+}
+
+function populateEditbox(json){
+  var selector = document.getElementById('cfg-options');
+  console.log('popeditbox')
+  var bindEditBox = document.getElementById('editbox')
+  console.log(selector.value);
+  bindEditBox.innerHTML = selector.value;
+  // bindEditBox.innerHTML = json[selector.dataset.keyboardKey.toLowerCase()][0][selector.value];
 }
