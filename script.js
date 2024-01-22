@@ -49,7 +49,11 @@ function buildDropdown(keyboardKey, bindEditor, json) {
     bindEditor.prepend(presetsSelector);
   }
 
-  var newChildren = [];
+  var defaultOption = document.createElement('option');
+  defaultOption.setAttribute('id', 'default');
+  defaultOption.innerHTML = '---';
+  defaultOption.value = '-1';
+  var newChildren = [defaultOption];
   // get the cfg options from json and make option elements from them
   for (var item in json[keyboardKey.toLowerCase()][0]) {
 
@@ -76,6 +80,9 @@ function populateEditbox(json){
   console.log('popeditbox')
   var bindEditBox = document.getElementById('editbox')
   console.log(selector.value);
-  bindEditBox.innerHTML = selector.value;
-  // bindEditBox.innerHTML = json[selector.dataset.keyboardKey.toLowerCase()][0][selector.value];
+  if (selector.value == -1) {
+    bindEditBox.innerHTML = '';
+  } else {
+    bindEditBox.innerHTML = json[selector.dataset.keyboardKey.toLowerCase()][0][selector.value];
+  }
 }
