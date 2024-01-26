@@ -1,19 +1,43 @@
+let configuredData = {};
 
 document.addEventListener("DOMContentLoaded", function (event) {
   const keySelector = document.getElementById("key-selector");
+  const saveButton = document.getElementById('save')
 
-  let cfgData;
+
+  let cfgDataDefault;
   const defaultCfg =  fetch("./cfgDefault.json")
     .then((response) => response.json()).then((json) => {
-      cfgData = json;
+      cfgDataDefault = json;
     });
 
-    console.log(cfgData);
-
   keySelector.addEventListener("click", (event) => {
-    changeEditbox(event, cfgData);
+    changeEditbox(event, cfgDataDefault);
   });
+  save.addEventListener("click", (event) => {
+    saveCfg();
+  });
+
+
+
+  for (let i = 0; i < document.querySelectorAll('button').length; i++) {
+    const button = document.querySelectorAll('button')[i];
+    if (button.innerHTML == '' || button.innerHTML.indexOf('arrow') != -1) {
+      continue;
+    }
+
+    button.setAttribute('id', button.innerHTML.toLowerCase());
+  }
 });
+
+function saveCfg(){
+  var keyboardKey = document.getElementById('cfg-options').dataset.keyboardKey.toLowerCase();
+  var editbox = document.getElementById('editbox');
+
+  configuredData[keyboardKey] = editbox.value;
+  document.getElementById(keyboardKey.toLowerCase()).classList.add('edited-button')
+  console.log(configuredData)
+}
 
 function changeEditbox(event, json) {
   const isButton = event.target.nodeName === "BUTTON";
@@ -43,7 +67,6 @@ function buildDropdown(keyboardKey, bindEditor, json) {
   // create select element
   var presetsSelector = document.createElement("select");
   presetsSelector.setAttribute("id", 'cfg-options' );
-  presetsSelector.setAttribute('data-keyboard-key', keyboardKey);
   // add the select element if it is not already there
   if(!bindEditor.contains(document.getElementById('cfg-options'))){
     bindEditor.prepend(presetsSelector);
@@ -68,8 +91,8 @@ function buildDropdown(keyboardKey, bindEditor, json) {
   // that is already there, so we must redefine it as the one that is already in the DOM
   presetsSelector = document.getElementById('cfg-options');
   presetsSelector.replaceChildren(...newChildren);
+  presetsSelector.setAttribute('data-keyboard-key', keyboardKey);
 
-  // presetsSelector.addEventListener('change', populateEditbox(json));
   presetsSelector.onchange = (event) => {
     populateEditbox(json);
   }
@@ -79,7 +102,7 @@ function populateEditbox(json){
   var selector = document.getElementById('cfg-options');
   console.log('popeditbox')
   var bindEditBox = document.getElementById('editbox')
-  console.log(selector.value);
+  console.log(selector.dataset.keyboardKey);
   if (selector.value == -1) {
     bindEditBox.innerHTML = '';
   } else {

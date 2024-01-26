@@ -30,7 +30,7 @@
             <button>F10</button>
             <button>F11</button>
             <button>F12</button>
-            <button>DEV</button>
+            <button id="dev">DEV</button>
           </div>
           <div class="row zero">
             <button class="hidden"></button>
@@ -105,12 +105,12 @@
           <div class="arrow-keys">
             <div>
               <button class="hidden"><i class="arrow up"></i></button>
-              <button><i class="arrow up"></i></button>
+              <button id="arrow-up"><i class="arrow up"></i></button>
             </div>
             <div>
-              <button><i class="arrow left"></i></button>
-              <button><i class="arrow down"></i></button>
-              <button><i class="arrow right"></i></button>
+              <button id="arrow-left"><i class="arrow left"></i></button>
+              <button id="arrow-down"><i class="arrow down"></i></button>
+              <button id="arrow-right"><i class="arrow right"></i></button>
             </div>
           </div>
 
@@ -159,6 +159,8 @@
       <div class="bind-editor" id="bind-editor">
 
         <textarea name="bind-edit-box" id="editbox" cols="30" rows="10"></textarea>
+        <button id="save" class="save-button">Save</button>
+
       </div>
     </div>
   </body>

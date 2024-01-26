@@ -18,6 +18,12 @@ body {
   background: rgb(43, 43, 43);
 }
 
+.save-button {
+  margin: 0px 0px 0px 50px;
+  min-width: 80px;
+  max-height: 40px;
+}
+
 #editbox {
   padding: 10px;
   margin: 50px;
@@ -82,6 +88,11 @@ button {
   border: 1px solid #e8e8e860;
   transition: all .3s;
   box-shadow: 6px 6px 12px #e0e0e01a, -6px -6px transparent;
+  color: white;
+}
+
+.edited-button {
+  border: 2px solid #1a8b20;
 }
 
 button:hover {

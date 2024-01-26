@@ -1,0 +1,6 @@
+cfgurator:
+    ☐ figure out creating a file from vanilla js
+    figure out how to hold user defined state in dictionary for each key:
+        ☐ save button to add current info to dictionary
+        ☐ retrieve info from dictionary when moving to a different key
+        
