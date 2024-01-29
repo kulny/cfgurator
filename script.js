@@ -2,11 +2,11 @@ let configuredData = {};
 
 document.addEventListener("DOMContentLoaded", function (event) {
   const keySelector = document.getElementById("key-selector");
-  const saveButton = document.getElementById('save')
-
+  // const saveButton = document.getElementById('save')
+  const dlButton = document.getElementById('download-button');
 
   let cfgDataDefault;
-  const defaultCfg =  fetch("./cfgDefault.json")
+  fetch("./cfgDefault.json")
     .then((response) => response.json()).then((json) => {
       cfgDataDefault = json;
     });
@@ -18,8 +18,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     saveCfg();
   });
 
+  addIDsToButtons();
 
+  dlButton.addEventListener('click', function () {
+    downloadCfg();
 
+  }, false);
+});
+
+function addIDsToButtons() {
   for (let i = 0; i < document.querySelectorAll('button').length; i++) {
     const button = document.querySelectorAll('button')[i];
     if (button.innerHTML == '' || button.innerHTML.indexOf('arrow') != -1) {
@@ -28,7 +35,20 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     button.setAttribute('id', button.innerHTML.toLowerCase());
   }
-});
+}
+
+function downloadCfg() {
+  var link = document.createElement('a');
+  link.setAttribute('download', 'autoexec.cfg');
+  link.href = makeCfgFile();
+  document.body.appendChild(link);
+
+  window.requestAnimationFrame(function () {
+    var event = new MouseEvent('click');
+    link.dispatchEvent(event);
+    document.body.removeChild(link);
+  });
+}
 
 function saveCfg(){
   var keyboardKey = document.getElementById('cfg-options').dataset.keyboardKey.toLowerCase();
@@ -57,6 +77,14 @@ function changeEditbox(event, json) {
   }
 
   buildDropdown(key, bindEditor, json);
+
+  if (configuredData[event.target.innerHTML.toLowerCase()]) {
+    var bindEditBox = document.getElementById('editbox')
+    bindEditBox.innerHTML = configuredData[event.target.innerHTML.toLowerCase()];
+  } else {
+    var bindEditBox = document.getElementById('editbox')
+    bindEditBox.innerHTML = '';
+  }
 }
 
 function buildDropdown(keyboardKey, bindEditor, json) {
@@ -109,3 +137,21 @@ function populateEditbox(json){
     bindEditBox.innerHTML = json[selector.dataset.keyboardKey.toLowerCase()][0][selector.value];
   }
 }
+
+var cfgFile = null,
+  makeCfgFile = function () {
+    var text = '';
+    Object.keys(configuredData).forEach(element => {
+      text += '## ' + element + '\n' + configuredData[element] + '\n';
+    });
+
+    var data = new Blob([text], {type: 'text/plain'});
+
+    if (cfgFile !== null) {
+      window.URL.revokeObjectURL(cfgFile);
+    }
+
+    cfgFile = window.URL.createObjectURL(data);
+
+    return cfgFile;
+  }

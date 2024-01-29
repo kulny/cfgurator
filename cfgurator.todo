@@ -1,6 +1,6 @@
 cfgurator:
     ☐ figure out creating a file from vanilla js
     figure out how to hold user defined state in dictionary for each key:
-        ☐ save button to add current info to dictionary
+        ✔ save button to add current info to dictionary @done (1/29/2024, 3:48:44 PM)
         ☐ retrieve info from dictionary when moving to a different key
         
