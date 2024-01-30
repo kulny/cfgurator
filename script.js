@@ -102,7 +102,7 @@ function buildDropdown(keyboardKey, bindEditor, json) {
 
   var defaultOption = document.createElement('option');
   defaultOption.setAttribute('id', 'default');
-  defaultOption.innerHTML = '---';
+  defaultOption.innerHTML = '--- Presets ---';
   defaultOption.value = '-1';
   var newChildren = [defaultOption];
   // get the cfg options from json and make option elements from them
