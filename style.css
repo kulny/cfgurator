@@ -34,7 +34,7 @@
 
 .interact-buttons {
   display: flex;
-  margin-bottom: 15px;
+padding-bottom: 100px;
 }
 
 html {
@@ -63,13 +63,13 @@ html {
   position: fixed;
   width: 100vw;
   bottom: 0px;
-  height: 350px;
+  height: 40vh;
   z-index: 100;
 }
 
 textarea {
   border-radius: 12px;
-  width: 600px;
+  min-width: 45vw;
 }
 
 .textarea-wrapper {
@@ -89,6 +89,7 @@ textarea {
   flex-direction: column;
   row-gap: 10px;
   margin-top: 25px;
+  padding: 10px;
 }
 
 
@@ -200,3 +201,9 @@ button:hover {
   }
 } */
 
+select {
+  border-radius: 10px;
+  width: fit-content;
+  min-width: 100px;
+  padding: 5px;
+}

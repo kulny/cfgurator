@@ -1,8 +1,9 @@
 let configuredData = {};
+let currentKeyboardKey = "";
 
 document.addEventListener("DOMContentLoaded", function (event) {
   const keySelector = $("#key-selector");
-  // const saveButton = $('#save')
+  const saveButton = $('#save')
   const dlButton = $("#download-button");
 
   let cfgDataDefault;
@@ -15,9 +16,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
   keySelector.on("click", (event) => {
     changeEditbox(event, cfgDataDefault);
   });
-  // save.on("click", (event) => {
-  //   saveCfg();
-  // });
+  saveButton.on("click", (event) => {
+    saveCfg();
+  });
+  $("#cfg-options").addClass("hidden");
 
   addIDsToButtons();
 
@@ -31,13 +33,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function addIDsToButtons() {
-  for (let i = 0; i < $("key-selector button").length; i++) {
-    const button = $("key-selector button")[i];
-    if (button.innerHTML == "" || button.innerHTML.indexOf("arrow") != -1) {
-      continue;
-    }
-
-    button.attr("id", button.innerHTML.toLowerCase());
+  for (let i = 0; i < $("#key-selector button").length; i++) {
+    $("#key-selector button").each(
+      function(index) {
+        if ($(this).text() == "" || $(this).text().indexOf("arrow") != -1) {
+          // do nothing because in this case we get the empty or arrow key buttons, which have no use or already have id's (the arrow keys have ids)
+        } else {
+          $(this).attr("id", $(this).text().toLowerCase());
+        }
+      }
+    )
   }
 }
 
@@ -55,16 +60,22 @@ function downloadCfg() {
 }
 
 function saveCfg() {
-  var keyboardKey = document
-    .getElementById("cfg-options")
-    .dataset.keyboardKey.toLowerCase();
-  var editbox = document.getElementById("editbox");
+  var keyboardKey = $("#cfg-options").attr("data-keyboard-key").toLowerCase();
+  var editbox = $("#editbox");
 
-  configuredData[keyboardKey] = editbox.value;
-  document
-    .getElementById(keyboardKey.toLowerCase())
-    .classList.add("edited-button");
-  console.log(configuredData);
+  configuredData[keyboardKey] = editbox.val();
+  $(`#${keyboardKey}`).addClass("edited-button");
+
+  displayFinalCFG();
+}
+
+function displayFinalCFG(){
+  var finalCfg = $("#final-edit-box");
+  var cfgString = '';
+  for(var item in configuredData){
+    cfgString += configuredData[item] + "\n\n";
+  }
+  finalCfg.val(cfgString);
 }
 
 function changeEditbox(event, json) {
@@ -98,6 +109,14 @@ function changeEditbox(event, json) {
 
 function buildDropdown(keyboardKey, bindEditor, json) {
   var presetsSelector = $("#cfg-options");
+
+  // clear dropdown preset options after clicking a different key
+  if (currentKeyboardKey != keyboardKey) {
+    presetsSelector.empty();
+  }
+  currentKeyboardKey = keyboardKey;
+
+  presetsSelector.removeClass("hidden");
 
   var defaultOption = $(
     "<option id='default' value='-1'>--- Presets ---</option>"

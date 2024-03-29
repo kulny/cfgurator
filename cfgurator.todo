@@ -7,5 +7,6 @@ cfgurator:
         ✘ create new key for general cfg? @cancelled (1/30/2024, 4:17:43 PM)
         ✔ or add a separate editbox that is for general cfg @done (1/30/2024, 4:17:41 PM)
         ☐ add all cfg info to final cfg info box as new info is entered
+        ☐ figure out how to access buttons from their programmatic id
     new presets style:
         ☐ add selectable library of presets that append new cfg to the final cfg info box
