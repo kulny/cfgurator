@@ -99,44 +99,51 @@ function changeEditbox(event, json) {
 function buildDropdown(keyboardKey, bindEditor, json) {
   var presetsSelector = $("#cfg-options");
 
-  var defaultOption = $("<option id='default' value='-1'>--- Presets ---</option>");
-  console.log(defaultOption)
-  var newChildren = [defaultOption];
-
-  presetsSelector.append($('<option>', {
-    id: "default",
-    value: -1,
-    text: "--- Presets ---",
-  }));
+  var defaultOption = $(
+    "<option id='default' value='-1'>--- Presets ---</option>"
+  );
+  console.log(defaultOption);
+    if (!presetsSelector.has("#default").length > 0) {
+      presetsSelector.append(
+        $("<option>", {
+          id: "default",
+          value: -1,
+          text: "--- Presets ---",
+        })
+      );
+    }
+  
   // get the cfg options from json and make option elements from them
   for (var item in json[keyboardKey.toLowerCase()][0]) {
-    presetsSelector.append($("<option>", {
-      id: item,
-      value: item,
-      text: item,
-    }));
+    if (!presetsSelector.has(`#${item}`).length > 0) {
+      presetsSelector.append(
+        $("<option>", {
+          id: item,
+          value: item,
+          text: item,
+        })
+      );
+    }
   }
   presetsSelector.attr("data-keyboard-key", keyboardKey);
-  console.log(presetsSelector)
+  console.log(presetsSelector);
 
-  // presetsSelector.onchange = (event) => {
-  //   populateEditbox(json);
-  // };
-  presetsSelector.on("change", () => {
+  presetsSelector.on("change", (event) => {
     populateEditbox(json);
   });
 }
 
 function populateEditbox(json) {
   var selector = $("#cfg-options");
-  console.log("popeditbox");
   var bindEditBox = $("#editbox");
-  console.log(selector.dataset.keyboardKey);
-  if (selector.value == -1) {
-    bindEditBox.innerHTML = "";
+  if (selector.val() == -1) {
+    console.log("tried to clear")
+    bindEditBox.val("");
   } else {
-    bindEditBox.innerHTML =
-      json[selector.dataset.keyboardKey.toLowerCase()][0][selector.value];
+    bindEditBox.val(
+      json[selector.attr("data-keyboard-key").toLowerCase()][0][
+        selector.val()
+      ]);
   }
 }
 
