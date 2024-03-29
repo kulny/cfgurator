@@ -1,6 +1,5 @@
 @import url("htpps://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-
 * {
   margin: 0;
   padding: 0;
@@ -12,20 +11,35 @@
 
 .cfgurator {
   display: flex;
+  flex-direction: column;
+}
+
+
+.key-selector {
+  display: flex;
   justify-content: center;
+  /* align-items: center; */
+  gap: 20px;
+  overflow: scroll;
+  height: 500px;
 }
 
 .bind-editor {
+  margin-top: 25px;
+  color: white;
   display: flex;
   flex-direction: column;
+  row-gap: 10px;
 }
 
 .interact-buttons {
   display: flex;
+  margin-bottom: 15px;
 }
 
-body {
-  background: rgb(43, 43, 43);
+html {
+  background: rgb(32, 31, 31);
+  height: 70vh;
 }
 
 .save-button {
@@ -41,32 +55,47 @@ body {
   background-color: darkgreen;
 }
 
+.editing-section {
+  background-color: rgb(51, 50, 50);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  width: 100vw;
+  bottom: 0px;
+  height: 350px;
+  z-index: 100;
+}
+
+textarea {
+  border-radius: 12px;
+  width: 600px;
+}
+
+.textarea-wrapper {
+  max-width: 100vw;
+}
+
 #editbox {
   padding: 10px;
-  margin: 50px;
-  border-radius: 4px;
+  margin-bottom: 10px;
   font-size: 16px;
   border: 2px solid;
   resize: none;
-  height: 350px;
-  width: 300px;
 }
 
 .final-box {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
 
 #final-edit-box {
-  border-radius: 4px;
   font-size: 16px;
   border: 2px solid;
   resize: none;
-  height: 500px;
-  width: 300px;
 }
 
 #final-box-label {
@@ -78,11 +107,11 @@ body {
 /* main keyboard section */
 
 .keyboard {
-  margin: 50px;
-  width: 900px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  /* flex: 2; */
   box-shadow: none;
 }
-
 
 /* specific buttons */
 
@@ -97,22 +126,11 @@ body {
   width: 500px;
 }
 
-.arrow-keys {
-  float: left;
-  margin: 50px;
-}
-
-.weird-keys {
-  margin: 50px;
-}
-
-.numpad {
-  width: 500px;
-}
-
 .extra-keys {
-  width: 900px;
   display: flex;
+  flex-direction: column;
+  max-height: 20vh;
+  gap: 10px;
 }
 
 /* buttons */
@@ -127,14 +145,12 @@ button {
   cursor: pointer;
   border: 1px solid #e8e8e860;
   transition: all .3s;
-  box-shadow: 6px 6px 12px #e0e0e01a, -6px -6px transparent;
   color: white;
 }
 
 .edited-button {
   border: 2px solid #1a8b20;
 }
-
 
 
 button:hover {
@@ -174,3 +190,13 @@ button:hover {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
+
+
+/* @media (1200px > width) {
+  .cfgurator {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+} */
+

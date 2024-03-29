@@ -4,6 +4,8 @@ cfgurator:
         ✔ save button to add current info to dictionary @done (1/29/2024, 3:48:44 PM)
         ✔ retrieve info from dictionary when moving to a different key @done (1/30/2024, 3:12:04 PM)
     general cfg info:
-        ☐ create new key for general cfg?
-        ☐ or add a separate editbox that is for general cfg
-        
+        ✘ create new key for general cfg? @cancelled (1/30/2024, 4:17:43 PM)
+        ✔ or add a separate editbox that is for general cfg @done (1/30/2024, 4:17:41 PM)
+        ☐ add all cfg info to final cfg info box as new info is entered
+    new presets style:
+        ☐ add selectable library of presets that append new cfg to the final cfg info box

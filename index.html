@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CFGurator</title>
     <script type="text/javascript" src="./lodash.js"></script>
-    <script type="module" src="./script.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -94,7 +93,7 @@
           </div>
           <div class="row four">
             <button>CTRL</button>
-            <button>WIN</button>
+            <button class="hidden">WIN</button>
             <button>ALT</button>
             <button class="super-wide">SPACE</button>
             <button>ALT</button>
@@ -156,27 +155,37 @@
           </div>
         </div>
       </div>
-      <div class="bind-editor" id="bind-editor">
-        <textarea
-          name="bind-edit-box"
-          id="editbox"
-          cols="30"
-          rows="10"
-        ></textarea>
-        <div class="interact-buttons" id="interact-buttons">
-          <button id="save" class="save-button">Save</button>
-          <button id="download-button" class="dl-button">Get cfg file</button>
+      <div class="editing-section">
+        <div class="bind-editor" id="bind-editor">
+          <label id="bind-editor-label">Bind Editor</label>
+          <select name="cfg-options" id="cfg-options"></select>
+          <div class="textarea-wrapper">
+            <textarea
+              name="bind-edit-box"
+              id="editbox"
+              cols="30"
+              rows="10"
+            ></textarea>
+          </div>
+          <div class="interact-buttons" id="interact-buttons">
+            <button id="save" class="save-button">Save</button>
+            <button id="download-button" class="dl-button">Get cfg file</button>
+          </div>
+        </div>
+        <div class="final-box" id="final-box">
+          <label id="final-box-label">Final CFG</label>
+          <div class="textarea-wrapper">
+            <textarea
+              name="final-edit-box"
+              id="final-edit-box"
+              cols="50"
+              rows="10"
+            ></textarea>
+          </div>
         </div>
       </div>
-      <div class="final-box" id="final-box">
-        <label id="final-box-label">Final CFG</label>
-        <textarea
-          name="final-edit-box"
-          id="final-edit-box"
-          cols="50"
-          rows="10"
-        ></textarea>
-      </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="module" src="./script.js"></script>
   </body>
 </html>
